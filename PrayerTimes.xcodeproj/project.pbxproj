@@ -14,6 +14,12 @@
 		FCA26FD92B573A3B00A059D0 /* PrayerTimes.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FCA26FD72B573A3B00A059D0 /* PrayerTimes.xcdatamodeld */; };
 		FCA26FDB2B573A3C00A059D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FCA26FDA2B573A3C00A059D0 /* Assets.xcassets */; };
 		FCA26FDE2B573A3C00A059D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FCA26FDC2B573A3C00A059D0 /* LaunchScreen.storyboard */; };
+		FCA2700E2B58277B00A059D0 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2700D2B58277B00A059D0 /* NetworkManager.swift */; };
+		FCA270102B58339800A059D0 /* PrayerTimesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA2700F2B58339800A059D0 /* PrayerTimesModel.swift */; };
+		FCA270132B58357700A059D0 /* EncodeDecodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA270122B58357700A059D0 /* EncodeDecodeHelper.swift */; };
+		FCC0DED72B59B49B0091E301 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0DED62B59B49B0091E301 /* Utilities.swift */; };
+		FCC0DEDA2B59C34D0091E301 /* PrayerTimingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0DED92B59C34D0091E301 /* PrayerTimingsTableViewCell.swift */; };
+		FCC0DEDC2B59C5870091E301 /* PrayerTimingsTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCC0DEDB2B59C5870091E301 /* PrayerTimingsTableViewCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +32,12 @@
 		FCA26FDA2B573A3C00A059D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FCA26FDD2B573A3C00A059D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FCA26FDF2B573A3C00A059D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FCA2700D2B58277B00A059D0 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		FCA2700F2B58339800A059D0 /* PrayerTimesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimesModel.swift; sourceTree = "<group>"; };
+		FCA270122B58357700A059D0 /* EncodeDecodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodeDecodeHelper.swift; sourceTree = "<group>"; };
+		FCC0DED62B59B49B0091E301 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		FCC0DED92B59C34D0091E301 /* PrayerTimingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimingsTableViewCell.swift; sourceTree = "<group>"; };
+		FCC0DEDB2B59C5870091E301 /* PrayerTimingsTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrayerTimingsTableViewCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +70,86 @@
 		FCA26FCD2B573A3B00A059D0 /* PrayerTimes */ = {
 			isa = PBXGroup;
 			children = (
-				FCA26FCE2B573A3B00A059D0 /* AppDelegate.swift */,
-				FCA26FD02B573A3B00A059D0 /* SceneDelegate.swift */,
-				FCA26FD22B573A3B00A059D0 /* ViewController.swift */,
-				FCA26FD42B573A3B00A059D0 /* Main.storyboard */,
-				FCA26FDA2B573A3C00A059D0 /* Assets.xcassets */,
-				FCA26FDC2B573A3C00A059D0 /* LaunchScreen.storyboard */,
+				FCA2700C2B58275D00A059D0 /* Managers */,
+				FCA2700A2B5826A100A059D0 /* ViewControllers */,
+				FCC0DED82B59C1F40091E301 /* Views */,
+				FCA270092B58269700A059D0 /* ViewModel */,
+				FCA270082B58269000A059D0 /* Model */,
+				FCC0DED52B59B48B0091E301 /* Utilities */,
+				FCA270112B58356200A059D0 /* Helpers */,
+				FCA2700B2B5826D200A059D0 /* Misc */,
 				FCA26FDF2B573A3C00A059D0 /* Info.plist */,
 				FCA26FD72B573A3B00A059D0 /* PrayerTimes.xcdatamodeld */,
 			);
 			path = PrayerTimes;
+			sourceTree = "<group>";
+		};
+		FCA270082B58269000A059D0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				FCA2700F2B58339800A059D0 /* PrayerTimesModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		FCA270092B58269700A059D0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				FCC0DEDB2B59C5870091E301 /* PrayerTimingsTableViewCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		FCA2700A2B5826A100A059D0 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				FCA26FD22B573A3B00A059D0 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		FCA2700B2B5826D200A059D0 /* Misc */ = {
+			isa = PBXGroup;
+			children = (
+				FCA26FCE2B573A3B00A059D0 /* AppDelegate.swift */,
+				FCA26FD02B573A3B00A059D0 /* SceneDelegate.swift */,
+				FCA26FDA2B573A3C00A059D0 /* Assets.xcassets */,
+				FCA26FD42B573A3B00A059D0 /* Main.storyboard */,
+				FCA26FDC2B573A3C00A059D0 /* LaunchScreen.storyboard */,
+			);
+			path = Misc;
+			sourceTree = "<group>";
+		};
+		FCA2700C2B58275D00A059D0 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				FCA2700D2B58277B00A059D0 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		FCA270112B58356200A059D0 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FCA270122B58357700A059D0 /* EncodeDecodeHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		FCC0DED52B59B48B0091E301 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FCC0DED62B59B49B0091E301 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		FCC0DED82B59C1F40091E301 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FCC0DED92B59C34D0091E301 /* PrayerTimingsTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,9 +224,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA26FD32B573A3B00A059D0 /* ViewController.swift in Sources */,
+				FCC0DEDA2B59C34D0091E301 /* PrayerTimingsTableViewCell.swift in Sources */,
 				FCA26FD92B573A3B00A059D0 /* PrayerTimes.xcdatamodeld in Sources */,
+				FCA2700E2B58277B00A059D0 /* NetworkManager.swift in Sources */,
+				FCA270102B58339800A059D0 /* PrayerTimesModel.swift in Sources */,
+				FCA270132B58357700A059D0 /* EncodeDecodeHelper.swift in Sources */,
 				FCA26FCF2B573A3B00A059D0 /* AppDelegate.swift in Sources */,
+				FCC0DED72B59B49B0091E301 /* Utilities.swift in Sources */,
 				FCA26FD12B573A3B00A059D0 /* SceneDelegate.swift in Sources */,
+				FCC0DEDC2B59C5870091E301 /* PrayerTimingsTableViewCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
