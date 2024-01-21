@@ -19,6 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     private let manager = CLLocationManager()
 
+    private var locationName: String = ""
     private var longitude: Double = 0.0
     private var latitude: Double = 0.0
     
@@ -40,16 +41,55 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return addressLabel
     }()
     
+    private let locationNameLabel: UILabel  = {
+        let locationNameLabel               = UILabel()
+        locationNameLabel.translatesAutoresizingMaskIntoConstraints = false
+        locationNameLabel.backgroundColor   = .systemBlue
+        locationNameLabel.numberOfLines = 0
+        locationNameLabel.layer.borderWidth = 3
+        locationNameLabel.text = " Enter your location name below:"
+        locationNameLabel.layer.borderColor = UIColor.systemBlue.cgColor
+        return locationNameLabel
+    }()
+ 
+    private let locationNameText: UITextField  = {
+        let locationNameText               = UITextField()
+        locationNameText.translatesAutoresizingMaskIntoConstraints = false
+        locationNameText.backgroundColor   = .systemGreen
+        locationNameText.layer.borderWidth = 3
+        locationNameText.layer.borderColor = UIColor.systemBlue.cgColor
+        return locationNameText
+    }()
+    
+    private let goButton: UIButton  = {
+        let goButton               = UIButton()
+        goButton.translatesAutoresizingMaskIntoConstraints = false
+        goButton.backgroundColor   = .systemCyan
+        return goButton
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
-        self.title = "Prayer Times"
         table.delegate = self
         table.dataSource = self
         view.addSubview(table)
         view.addSubview(addressLabel)
+        view.addSubview(locationNameLabel)
+        view.addSubview(locationNameText)
+        view.addSubview(goButton)
         configureConstraints()
-        addressLabel.text = " dklsfksdjflksjfls"
+        
+   //     self.title = "Prayer Times for \(locationName)"
+
+        let address = "Rio de Janeiro, Brazil"
+        getCoordinateFrom(address: address) { coordinate, error in
+            guard let coordinate = coordinate, error == nil else { return }
+            // don't forget to update the UI from the main thread
+            DispatchQueue.main.async {
+                print(address, "Location:", coordinate) // Rio de Janeiro, Brazil Location: CLLocationCoordinate2D(latitude: -22.9108638, longitude: -43.2045436)
+            }
+        }
     }
     
     func configureConstraints() {
@@ -59,15 +99,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             table.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             table.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
             
-            addressLabel.topAnchor.constraint(equalTo: table.bottomAnchor, constant: 20),
-            addressLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            addressLabel.topAnchor.constraint(equalTo: table.bottomAnchor, constant: 0),
+            addressLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -200),
             addressLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20),
             addressLabel.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
+ 
+            locationNameText.topAnchor.constraint(equalTo: addressLabel.bottomAnchor, constant: 40),
+            locationNameText.heightAnchor.constraint(equalToConstant: 54),
+            locationNameLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20),
+            locationNameLabel.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -60),
+
+            locationNameText.topAnchor.constraint(equalTo: locationNameLabel.bottomAnchor, constant: 10),
+            locationNameText.heightAnchor.constraint(equalToConstant: 44),
+            locationNameText.widthAnchor.constraint(equalToConstant: 200),
+            locationNameText.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20),
+
+            goButton.topAnchor.constraint(equalTo: locationNameLabel.bottomAnchor, constant: 10),
+            goButton.heightAnchor.constraint(equalToConstant: 44),
+            goButton.widthAnchor.constraint(equalToConstant: 44),
+            goButton.leftAnchor.constraint(equalTo: locationNameText.rightAnchor, constant: 20),
+
         ])
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("** -> viewModels.count = \(viewModels.count)")
         return viewModels.count
     }
     
@@ -138,12 +193,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 print("Error: Address not found")
                 return
             }
-            self.addressLabel.text = "\(localAddress)"
+            self.addressLabel.text = "  ADDRESS: \n\n\(localAddress)"
             var cleanAddress = self.addressLabel.text!.replacingOccurrences(of: ",", with: "\n ")
             cleanAddress = cleanAddress.replacingOccurrences(of: ">", with: " ")
             cleanAddress = cleanAddress.replacingOccurrences(of: "<", with: " ")
+            cleanAddress = cleanAddress.replacingOccurrences(of: "street", with: "\n street ")
+            
+            let location = cleanAddress
+                .components(separatedBy: "city=")
+                .map { segment -> String in
+                        let name = segment.components(separatedBy: "\n")
+                        return name.first!
+                     }
+            self.locationName = location[1]
             self.addressLabel.text = cleanAddress
+            self.title = "Prayer Times for \(self.locationName)"
         }
+    }
+    
+    
+    func getCoordinateFrom(address: String, completion: @escaping(
+                    _ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> () ) {
+        CLGeocoder().geocodeAddressString(address) { completion($0?.first?.location?.coordinate, $1) }
     }
 }
 
