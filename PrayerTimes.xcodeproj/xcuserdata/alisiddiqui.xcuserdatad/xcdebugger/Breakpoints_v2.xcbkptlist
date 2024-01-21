@@ -3,4 +3,54 @@
    uuid = "FFA3DF3B-A8F5-49E3-AD93-3D8530ED1C5E"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "04E857B7-A694-425F-82FF-E538EDC280EC"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "PrayerTimes/ViewControllers/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "142"
+            endingLineNumber = "142"
+            landmarkName = "locationManager(_:didUpdateLocations:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "04E857B7-A694-425F-82FF-E538EDC280EC - b4672cc469dc9601"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.CLPlacemark&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PrayerTimes.ViewController.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  moduleName = "PrayerTimes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alisiddiqui/Desktop/projects/PrayerTimes/PrayerTimes/ViewControllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "1532">
+               </Location>
+               <Location
+                  uuid = "04E857B7-A694-425F-82FF-E538EDC280EC - b4672cc469dc9601"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.CLPlacemark&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in PrayerTimes.ViewController.locationManager(_: __C.CLLocationManager, didUpdateLocations: Swift.Array&lt;__C.CLLocation&gt;) -&gt; ()"
+                  moduleName = "PrayerTimes"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/alisiddiqui/Desktop/projects/PrayerTimes/PrayerTimes/ViewControllers/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "140"
+                  endingLineNumber = "140"
+                  offsetFromSymbolStart = "1176">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

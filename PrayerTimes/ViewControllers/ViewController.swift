@@ -3,10 +3,13 @@
 //  PrayerTimes
 //
 //  Created by Ali Siddiqui on 1/16/24.
-//
+//  getAthanTime(month: String, latValue: String, longValue: String, completion: @escaping (
+//  Result<[Welcome], CustomError>) -> Void ) {
+
 
 import UIKit
 import CoreLocation
+import Contacts
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, CLLocationManagerDelegate {
      
@@ -27,6 +30,16 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return table
     }()
     
+    private let addressLabel: UILabel  = {
+        let addressLabel               = UILabel()
+        addressLabel.translatesAutoresizingMaskIntoConstraints = false
+        addressLabel.backgroundColor   = .systemGray
+        addressLabel.numberOfLines = 0
+        addressLabel.layer.borderWidth = 3
+        addressLabel.layer.borderColor = UIColor.systemBlue.cgColor
+        return addressLabel
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemPink
@@ -34,7 +47,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         table.delegate = self
         table.dataSource = self
         view.addSubview(table)
+        view.addSubview(addressLabel)
         configureConstraints()
+        addressLabel.text = " dklsfksdjflksjfls"
     }
     
     func configureConstraints() {
@@ -42,7 +57,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             table.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
             table.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            table.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 0.3),
+            
+            addressLabel.topAnchor.constraint(equalTo: table.bottomAnchor, constant: 20),
+            addressLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100),
+            addressLabel.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor, constant: 20),
+            addressLabel.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor, constant: -20),
         ])
     }
     
@@ -59,8 +79,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.configure(viewModel: viewModels[indexPath.row])
         return cell
     }
-    
-//  getAthanTime(month: String, latValue: String, longValue: String, completion: @escaping (Result<[Welcome], CustomError>) -> Void ) {
     
     public private(set) var prayerTimesModel = [PrayerTimesModel]()
     
@@ -100,10 +118,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidAppear(_ animated: Bool) {
          super.viewDidAppear(animated)
-
-         DispatchQueue.global(qos: .userInitiated).async {
-             sleep(1)
-         }
      }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -111,11 +125,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             return
         }
         latitude = first.coordinate.latitude
-        longitude = first.coordinate.longitude        
-        getPrayerTimes()
+        longitude = first.coordinate.longitude
+        self.getPrayerTimes()
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        location.placemark { placemark, error in
+            guard let placemark = placemark else {
+                print("Error", error ?? "nil")
+                return
+            }
+            print(placemark.postalAddress ?? "Error: Address not found")
+            guard let localAddress = placemark.postalAddress else {
+                print("Error: Address not found")
+                return
+            }
+            self.addressLabel.text = "\(localAddress)"
+            print(self.addressLabel.text ?? "Error: Address not found")
+        }
     }
 }
 
+extension CLLocation {
+    func placemark(completion: @escaping ( _ placemark: CLPlacemark?, _ error: Error?  ) -> ()) {
+        CLGeocoder().reverseGeocodeLocation(self) { completion($0?.first, $1) }
 
+    }
+}
 
 
