@@ -139,7 +139,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 return
             }
             self.addressLabel.text = "\(localAddress)"
-            print(self.addressLabel.text ?? "Error: Address not found")
+            var cleanAddress = self.addressLabel.text!.replacingOccurrences(of: ",", with: "\n ")
+            cleanAddress = cleanAddress.replacingOccurrences(of: ">", with: " ")
+            cleanAddress = cleanAddress.replacingOccurrences(of: "<", with: " ")
+            self.addressLabel.text = cleanAddress
         }
     }
 }
