@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FC1E10042B5DA367003CE9D8 /* LocationPrayerTimesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1E10032B5DA367003CE9D8 /* LocationPrayerTimesViewController.swift */; };
+		FC1E10062B5EBB82003CE9D8 /* HomeScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC1E10052B5EBB82003CE9D8 /* HomeScreenView.swift */; };
 		FCA26FCF2B573A3B00A059D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA26FCE2B573A3B00A059D0 /* AppDelegate.swift */; };
 		FCA26FD12B573A3B00A059D0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA26FD02B573A3B00A059D0 /* SceneDelegate.swift */; };
 		FCA26FD32B573A3B00A059D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FCA26FD22B573A3B00A059D0 /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		FC1E10032B5DA367003CE9D8 /* LocationPrayerTimesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPrayerTimesViewController.swift; sourceTree = "<group>"; };
+		FC1E10052B5EBB82003CE9D8 /* HomeScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenView.swift; sourceTree = "<group>"; };
 		FCA26FCB2B573A3B00A059D0 /* PrayerTimes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PrayerTimes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FCA26FCE2B573A3B00A059D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FCA26FD02B573A3B00A059D0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				FCA26FD22B573A3B00A059D0 /* ViewController.swift */,
+				FC1E10032B5DA367003CE9D8 /* LocationPrayerTimesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -148,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				FCC0DED92B59C34D0091E301 /* PrayerTimingsTableViewCell.swift */,
+				FC1E10052B5EBB82003CE9D8 /* HomeScreenView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,7 +230,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				FCA26FD32B573A3B00A059D0 /* ViewController.swift in Sources */,
+				FC1E10042B5DA367003CE9D8 /* LocationPrayerTimesViewController.swift in Sources */,
 				FCC0DEDA2B59C34D0091E301 /* PrayerTimingsTableViewCell.swift in Sources */,
+				FC1E10062B5EBB82003CE9D8 /* HomeScreenView.swift in Sources */,
 				FCA26FD92B573A3B00A059D0 /* PrayerTimes.xcdatamodeld in Sources */,
 				FCA2700E2B58277B00A059D0 /* NetworkManager.swift in Sources */,
 				FCA270102B58339800A059D0 /* PrayerTimesModel.swift in Sources */,
